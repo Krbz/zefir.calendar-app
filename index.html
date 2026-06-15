@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <title>Календарь заметок | Вход</title>
+    <meta name="description" content="Личный и общий календарь для заметок с уведомлениями">
+    <meta name="author" content="Calendar App">
+    
+    <meta property="og:title" content="Календарь заметок">
+    <meta property="og:description" content="Ваш личный календарь для заметок и напоминаний">
+    <meta property="og:type" content="website">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📅%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; margin: 0; }
+        .auth-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .auth-card { background: white; border-radius: 24px; padding: 40px; width: 100%; max-width: 480px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .logo { text-align: center; margin-bottom: 30px; }
+        .logo-icon { font-size: 48px; margin-bottom: 10px; }
+        .auth-card h1 { font-size: 28px; color: #333; margin-bottom: 8px; }
+        .auth-card > p { color: #6c757d; font-size: 14px; }
+        .auth-tabs { display: flex; gap: 10px; margin-bottom: 30px; background: #f8f9fa; border-radius: 12px; padding: 4px; }
+        .tab-btn { flex: 1; padding: 12px; background: transparent; border: none; font-size: 16px; cursor: pointer; border-radius: 8px; transition: all 0.3s; }
+        .tab-btn.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; }
+        .input-group input { width: 100%; padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; }
+        .btn-auth { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
+        .error-message { color: #f44336; font-size: 13px; margin-top: 12px; text-align: center; }
+        .auth-footer { margin-top: 24px; text-align: center; font-size: 12px; color: #6c757d; }
+        .github-badge { margin-top: 10px; font-size: 11px; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="logo">
+                <div class="logo-icon">📅</div>
+                <h1>Календарь заметок</h1>
+                <p>Ваши заметки всегда под рукой</p>
+                <div class="github-badge">📦 Hosted on GitHub Pages</div>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">🔐 Вход</button>
+                <button class="tab-btn" data-tab="register">📝 Регистрация</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+                <div class="input-group">
+                    <label>📧 Email</label>
+                    <input type="email" id="loginEmail" placeholder="example@mail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>🔒 Пароль</label>
+                    <input type="password" id="loginPassword" placeholder="минимум 6 символов" required>
+                </div>
+                <button type="submit" class="btn-auth">Войти</button>
+                <div class="error-message" id="loginError"></div>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <div class="input-group">
+                    <label>📧 Email</label>
+                    <input type="email" id="registerEmail" placeholder="example@mail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>🔒 Пароль</label>
+                    <input type="password" id="registerPassword" placeholder="минимум 6 символов" required>
+                </div>
+                <div class="input-group">
+                    <label>🔒 Подтверждение пароля</label>
+                    <input type="password" id="confirmPassword" placeholder="повторите пароль" required>
+                </div>
+                <button type="submit" class="btn-auth">Зарегистрироваться</button>
+                <div class="error-message" id="registerError"></div>
+            </form>
+            
+            <div class="auth-footer">
+                <p>📌 После регистрации подтвердите email</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    
+    <script src="config.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

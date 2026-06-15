@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перенаправление...</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .message { text-align: center; color: white; }
+        .spinner { width: 40px; height: 40px; margin: 20px auto; border: 4px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+    <script>
+        const path = window.location.pathname;
+        sessionStorage.setItem('redirectPath', path);
+        window.location.href = '/';
+    </script>
+</head>
+<body>
+    <div class="message">
+        <div class="spinner"></div>
+        <p>Перенаправление...</p>
+    </div>
+</body>
+</html>
